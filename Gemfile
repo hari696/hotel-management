@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Additional Dependencies.
 gem 'devise'
+gem 'rails_admin', '~> 2.0'
