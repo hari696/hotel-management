@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'search' => 'dashboard#search'
 
   resources :customers
+  resources :booked_rooms
 end

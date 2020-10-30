@@ -1,0 +1,30 @@
+<h1>Listing Booked Rooms</h1>
+
+<%= link_to 'Book Room', new_booked_room_path %>
+
+<table>
+  <tr>
+    <th>Room</th>
+    <th>Customer</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Check In</th>
+    <th>Check Out</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  
+  <% @booked_rooms.each do |booked_room| %>
+  <tr>
+    <td><%= booked_room.room.name %></td>
+    <td><%= booked_room.customer.name %></td>
+    <td><%= booked_room.start_date %></td>
+    <td><%= booked_room.end_date %></td>
+    <td><%= booked_room.check_in %></td>
+    <td><%= booked_room.check_out %></td>
+    <td><%= link_to 'Show', booked_room_path(booked_room) %></td>
+    <td><%= link_to 'Edit', edit_booked_room_path(booked_room) %></td>
+    <td><%= link_to 'Destroy', booked_room_path(booked_room), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>

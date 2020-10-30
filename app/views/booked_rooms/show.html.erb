@@ -1,0 +1,31 @@
+<p>
+  <strong>Room:</strong>
+  <%= @booked_room.room.name %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @booked_room.customer.name %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @booked_room.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong>
+  <%= @booked_room.end_date %>
+</p>
+
+<p>
+  <strong>Check In:</strong>
+  <%= @booked_room.check_in %>
+</p>
+
+<p>
+  <strong>Check Out:</strong>
+  <%= @booked_room.check_out %>
+</p>
+
+<%= link_to 'Back', booked_rooms_path %>
