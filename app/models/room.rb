@@ -1,5 +1,7 @@
 class Room < ApplicationRecord
   belongs_to :hotel
+
+  has_many :booked_rooms, dependent: :destroy
   
   validates :name, :room_type, :max_adults,  :max_children, :price, :amenities, presence: true
   validates :max_adults, :max_children, numericality: { only_integer: true }
