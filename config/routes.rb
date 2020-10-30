@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   
   get 'dashboard' => 'dashboard#dashboard'
   get 'search' => 'dashboard#search'
+
+  resources :customers
 end
