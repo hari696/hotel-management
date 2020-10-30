@@ -10,10 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201030102335) do
+ActiveRecord::Schema.define(version: 20201030111532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booked_rooms", force: :cascade do |t|
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "status", null: false
+    t.datetime "check_in", null: false
+    t.datetime "check_out", null: false
+    t.bigint "room_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_booked_rooms_on_customer_id"
+    t.index ["room_id"], name: "index_booked_rooms_on_room_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.string "profile_pic"
+    t.text "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hotels", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.text "address", null: false
+    t.string "contact_number", null: false
+    t.string "hotel_pic"
+    t.text "amenities"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "room_type", null: false
+    t.string "description"
+    t.integer "max_adults", null: false
+    t.integer "max_children", null: false
+    t.float "price", null: false
+    t.text "amenities"
+    t.bigint "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,4 +82,7 @@ ActiveRecord::Schema.define(version: 20201030102335) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "booked_rooms", "customers"
+  add_foreign_key "booked_rooms", "rooms"
+  add_foreign_key "rooms", "hotels"
 end
