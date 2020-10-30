@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201030172109) do
+ActiveRecord::Schema.define(version: 20201030184703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20201030172109) do
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.string "status", null: false
-    t.datetime "check_in", null: false
-    t.datetime "check_out", null: false
+    t.datetime "check_in"
+    t.datetime "check_out"
     t.bigint "room_id"
     t.bigint "customer_id"
     t.datetime "created_at", null: false
