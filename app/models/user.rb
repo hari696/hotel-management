@@ -5,4 +5,5 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable
   
   validates :email, presence: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
+  validates :email, uniqueness: true
 end

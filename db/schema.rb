@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201030111532) do
+ActiveRecord::Schema.define(version: 20201030172109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20201030111532) do
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_booked_rooms_on_customer_id"
     t.index ["room_id"], name: "index_booked_rooms_on_room_id"
+    t.index ["start_date", "end_date", "room_id"], name: "index_booked_rooms_on_start_date_and_end_date_and_room_id", unique: true
   end
 
   create_table "customers", force: :cascade do |t|
@@ -37,6 +38,8 @@ ActiveRecord::Schema.define(version: 20201030111532) do
     t.text "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["phone_number"], name: "index_customers_on_phone_number", unique: true
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 20201030111532) do
     t.text "amenities"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["contact_number"], name: "index_hotels_on_contact_number", unique: true
   end
 
   create_table "rooms", force: :cascade do |t|
