@@ -9,15 +9,33 @@
   </head>
 
   <body>
+    <header>
+      <div class="container header">
+        <div class=" row">
+          <div class="logo col-sm-6">
+            <img src="/assets/logo.jpg" alt="">
+          </div>
+          <% unless current_user.nil? %>
+          <div class="col-sm-5 text-right">
+            <a class="btn btn-primary" href="/users/sign_out">Log Out</a>
+          </div>
+          <% else %>
+          <div class="col-sm-6 text-right">
+            <% if request.path=='/users/sign_in' %>
+            <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
+            <% else %>
+            <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
     <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <% if current_user.present? %>
-        <a href="/users/sign_out">Log Out</a>
-      <% end %>
-
-      <%= yield %>
+      <div class="container container-wrapper">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
