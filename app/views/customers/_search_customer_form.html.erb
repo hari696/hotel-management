@@ -1,0 +1,11 @@
+<%= form_with scope: :customer, url: '/customers/search', method: :get, local: true do |form| %>
+
+<p>
+  <%= form.text_field :q, value: keyword %>
+</p>
+
+<p>
+  <%= form.submit %>
+</p>
+
+<% end %>

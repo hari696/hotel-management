@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   
   get 'dashboard' => 'dashboard#dashboard'
   get 'search' => 'dashboard#search'
-
-  resources :customers
+  
+  resources :customers do
+    get 'search', on: :collection
+  end
   resources :booked_rooms
 end

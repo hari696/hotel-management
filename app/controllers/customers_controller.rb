@@ -42,8 +42,24 @@ class CustomersController < ApplicationController
     redirect_to customers_path
   end
   
+  def search
+    @search_keyword = search_params[:q]
+    
+    @customers = if @search_keyword
+      Customer.where("lower(name) LIKE ?", "%#{@search_keyword.downcase}%")
+    else
+      Customer.all
+    end
+    
+    render 'customer_search'
+  end
+  
   private
   def customer_params
-    params.require(:customer).permit(:name, :email, :phone_number, :profile_pic, :address)
+    params.require(:customer).permit(:name, :email, :phone_numer, :profile_pic, :address)
+  end
+  
+  def search_params
+    params.require(:customer).permit(:q)
   end
 end

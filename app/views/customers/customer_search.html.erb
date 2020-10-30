@@ -1,8 +1,10 @@
-<h1>Listing Customers</h1>
+<%= render 'search_customer_form', keyword: @search_keyword %>
 
-<%= render 'search_customer_form', keyword: '' %>
+<%= link_to 'Back', customers_path %>
 
-<%= link_to 'Add Customer', new_customer_path %>
+<hr />
+
+<h1>Matching Customers</h1>
 
 <table>
   <tr>
