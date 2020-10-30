@@ -1,6 +1,6 @@
 class BookedRoomsController < ApplicationController
   def index
-    @booked_rooms = BookedRoom.all
+    @booked_rooms = BookedRoom.includes(:room, :customer).all
   end
   
   def new
