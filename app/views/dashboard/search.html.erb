@@ -1,0 +1,18 @@
+<h1>Searched For</h1>
+
+<%= render 'search_form', keyword: @search_keyword %>
+
+<h1>Available Rooms</h1>
+
+<% @available_rooms.each do |available_room| %>
+<div>
+  <h1><%= available_room.name %></h1>
+  <p><%= available_room.room_type %></p>
+  <p><%= available_room.description %></p>
+  <p><%= available_room.max_adults %></p>
+  <p><%= available_room.max_children %></p>
+  <p><%= available_room.price %></p>
+  <p><%= available_room.amenities %></p>
+  <hr />
+</div>
+<% end %>

@@ -1,0 +1,14 @@
+<h1>Find deals on hotels, homes and much more...</h1>
+<span>From cosy country homes to funky city flats</span>
+
+<%= form_with scope: :room, url: '/search', method: :get, local: true do |form| %>
+
+<p>
+  <%= form.text_field :q, value: keyword %>
+</p>
+
+<p>
+  <%= form.submit %>
+</p>
+
+<% end %>
