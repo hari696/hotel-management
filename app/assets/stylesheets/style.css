@@ -251,6 +251,17 @@ a:hover {
   color: #0069d9;
   letter-spacing: 0.28px;
 }
+.book-now {
+  background-color: #0069d9;
+  background: #13a507;
+  border: 0 none;
+  box-shadow: none;
+  color: #fff;
+  padding: 12px 17px 8px 17px;
+  font-size: 16px;
+  border-radius: 4px;
+  letter-spacing: 0.28px;
+}
 /*error message*/
 #error_explanation {
   color: red;
