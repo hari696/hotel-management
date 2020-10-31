@@ -32,7 +32,7 @@ namespace :hotel_management do
     room4 = Room.create!(name: '1 bed without balcony', room_type: 'RWB', description: '1 beded room without balcony', max_adults: 1, max_children: 0, price: 1200, amenities: 'Free toiletries,Toilet Bath or shower,TV,Refrigerator,Kitchenette,Fan,Cable channels,Wardrobe or closet', hotel: hotel)
     puts "==== Created Rooms ====================="
 
-    booked_room = BookedRoom.create!(start_date: today, end_date: tomorrow, status: 'BOOKED', check_in: current_time, check_out: next_one_hour, room: room2, customer: customer)
+    booked_room = BookedRoom.create!(start_date: today, end_date: tomorrow, status: 'booked', check_in: current_time, check_out: next_one_hour, room: room2, customer: customer)
     puts "==== Created Booked rooms =============="
   end
 end
