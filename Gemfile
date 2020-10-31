@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'pry', '~> 0.13.1'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails', require: false
+  gem 'database_cleaner'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
