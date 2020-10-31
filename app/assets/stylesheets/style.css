@@ -243,6 +243,14 @@ a:hover {
 .customer-padding {
   padding: 10px;
 }
+.customer-pic {
+  border-radius: 50%;
+  border: 3px solid #164cccab;
+}
+.customer-detail {
+  color: #0069d9;
+  letter-spacing: 0.28px;
+}
 /*error message*/
 #error_explanation {
   color: red;

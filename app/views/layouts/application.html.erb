@@ -16,6 +16,7 @@
 
       <div class="form-inline">
         <% unless current_user.nil? %>
+          <a class="navbar-menu pad-r0" href="/">Dashboard</a>
           <a class="navbar-menu pad-r0" href="/customers">Customers</a>
           <a class="navbar-menu" href="/booked_rooms">Bookings</a>
           <a class="btn btn-primary" href="/users/sign_out">Log Out</a>
