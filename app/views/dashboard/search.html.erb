@@ -5,21 +5,28 @@
 
 	<h1>Available Rooms</h1>
 
-	<% @available_rooms.each do |available_room| %>
-	<div class = "row cards">
-		<div class="hotel-img col-md-3 pad0">
-			 <img src="https://cf.bstatic.com/xdata/images/hotel/square200/229986201.webp?k=dedff536e335c317ecded28d8d76462e87671be25c304501fe123a714757fedf&o=" alt="Hotel"> 
+	<hr />
+
+	<% if @available_rooms.empty? %>
+		<h3>No Rooms Available, Please try again after sometime.</h3>
+		<h5>Sorry for the inconvenience occured.</h5>
+	<% else %>
+		<% @available_rooms.each do |available_room| %>
+		<div class = "row cards">
+			<div class="hotel-img col-md-3 pad0">
+				<img src="https://cf.bstatic.com/xdata/images/hotel/square200/229986201.webp?k=dedff536e335c317ecded28d8d76462e87671be25c304501fe123a714757fedf&o=" alt="Hotel"> 
+			</div>
+			<div class="card-content col-md-9">
+				<div class="room-header"><%= available_room.name %></div>
+				<div><span class="content-header">Room Type: </span> <span><%= available_room.room_type %></span></div>
+				<div><span class="content-header">Room Details: </span> <span><%= available_room.description %></span></div>
+				<div><span class="content-header">Max Adults: </span> <span><%= available_room.max_adults %></span></div>
+				<div><span class="content-header">Max Children: </span> <span><%= available_room.max_children %></span></div>
+				<div><span class="content-header">Total Price: </span> <span class="price-details"><%= available_room.price %></span></div>
+				<div><span class="content-header">Available Amenities: </span> <span><%= available_room.amenities %></span></div>
+				<div class="book-btn"><button>Book Now</button></div>
+			</div>
 		</div>
-		<div class="card-content col-md-9">
-		  <div class="room-header"><%= available_room.name %></div>
-		  <div><span class="content-header">Room Type: </span> <span><%= available_room.room_type %></span></div>
-		  <div><span class="content-header">Room Details: </span> <span><%= available_room.description %></span></div>
-		  <div><span class="content-header">Max Adults: </span> <span><%= available_room.max_adults %></span></div>
-		  <div><span class="content-header">Max Children: </span> <span><%= available_room.max_children %></span></div>
-		  <div><span class="content-header">Total Price: </span> <span class="price-details"><%= available_room.price %></span></div>
-		  <div><span class="content-header">Available Amenities: </span> <span><%= available_room.amenities %></span></div>
-		  <div class="book-btn"><button>Book Now</button></div>
-		</div>
-	</div>
+		<% end %>
 	<% end %>
 </div>

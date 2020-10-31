@@ -1,20 +1,18 @@
 <div class="search-container">
 	<h2>Find deals on hotels, homes and much more...</h2>
 	<span>From cosy country homes to funky city flats</span>
+	<%= form_with scope: :room, url: '/search', method: :get, local: true do |form| %>
 	<div class="row">
 		<div class="main-search col-md-10 pad-r0">
-			<%= form_with scope: :room, url: '/search', method: :get, local: true do |form| %>
-
-		<p>
-		  <%= form.text_field :q, value: keyword, placeholder: 'What are you looking for?', autocomplete: :off %>
-		</p>
+				<p>
+					<%= form.text_field :q, value: keyword, placeholder: 'What are you looking for?', autocomplete: :off %>
+				</p>
 		</div>
 		<div class="col-md-2 pad-l0 search-btn">
 			<p>
-			  <%= form.submit "Search" %>
+				<%= form.submit "Search" %>
 			</p>
 		</div>
 	</div>
-
 	<% end %>
 </div>

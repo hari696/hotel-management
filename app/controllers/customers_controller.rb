@@ -46,7 +46,7 @@ class CustomersController < ApplicationController
     @search_keyword = search_params[:q]
     
     @customers = if @search_keyword
-      Customer.where("lower(name) LIKE ?", "%#{@search_keyword.downcase}%")
+      Customer.search_customers(@search_keyword)
     else
       Customer.all
     end
