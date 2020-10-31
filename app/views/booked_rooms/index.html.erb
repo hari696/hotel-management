@@ -1,30 +1,64 @@
-<h1>Listing Booked Rooms</h1>
-
-<%= link_to 'Book Room', new_booked_room_path %>
-
-<table>
-  <tr>
-    <th>Room</th>
-    <th>Customer</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Check In</th>
-    <th>Check Out</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
+<div class="container dashboard">
+  <div class="row customer-padding">
+    <div class="col-md-6">
+      <h4>Listing Booked Rooms</h4>
+    </div>
+    <div class="col-md-6 padr0 customer-link">
+      <%= link_to new_booked_room_path  do %>
+      <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      </svg>
+      Book Room
+      <% end %>
+    </div>
+  </div>
   
-  <% @booked_rooms.each do |booked_room| %>
-  <tr>
-    <td><%= booked_room.room.name %></td>
-    <td><%= booked_room.customer.name %></td>
-    <td><%= booked_room.start_date %></td>
-    <td><%= booked_room.end_date %></td>
-    <td><%= booked_room.check_in %></td>
-    <td><%= booked_room.check_out %></td>
-    <td><%= link_to 'Show', booked_room_path(booked_room) %></td>
-    <td><%= link_to 'Edit', edit_booked_room_path(booked_room) %></td>
-    <td><%= link_to 'Destroy', booked_room_path(booked_room), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-</table>
+  <table class="table table-hover">
+    <tr>
+      <th>Room</th>
+      <th>Customer</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Status</th>
+      <th style="width: 5%" colspan="3">Actions</th>
+    </tr>
+    
+    <% @booked_rooms.each do |booked_room| %>
+    <tr>
+      <td><%= booked_room.room.name %></td>
+      <td><%= booked_room.customer.name %></td>
+      <td><%= Date.strptime(booked_room.start_date.to_s, '%Y-%m-%d').strftime('%d/%m/%Y') %></td>
+      <td><%= Date.strptime(booked_room.end_date.to_s, '%Y-%m-%d').strftime('%d/%m/%Y') %></td>
+      <td><%= booked_room.check_in.strftime("%d/%m/%Y - %R %p") || "-" %></td>
+      <td><%= booked_room.check_out.strftime("%d/%m/%Y - %R %p") || "-" %></td>
+      <td><%= booked_room.status || "-" %></td>
+      <td>
+        <%= link_to booked_room_path(booked_room) do %>
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        </svg>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to edit_booked_room_path(booked_room) do %>
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+        </svg>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to booked_room_path(booked_room), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

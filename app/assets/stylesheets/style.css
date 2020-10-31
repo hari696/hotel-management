@@ -96,6 +96,7 @@ button:focus {
 
 .sign-container input:focus,
 .customer-form input:focus,
+.customer-form select:focus,
 .customer-form textarea:focus {
   border: 1px solid #31ca33;
 }
@@ -209,7 +210,8 @@ button:focus {
 }
 
 .customer-form input,
-.customer-form textarea {
+.customer-form textarea,
+.customer-form select {
   width: 100%;
   color: #5d6066;
   font-size: 16px;

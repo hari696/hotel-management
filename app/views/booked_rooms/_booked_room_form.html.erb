@@ -1,56 +1,58 @@
-<%= form_with model: @booked_room, local: true do |form| %>
-
-<% if @booked_room.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(@booked_room.errors.count, "error") %> prohibited
-    this article from being saved:
-  </h2>
-  <ul>
-    <% @booked_room.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
+<div class="customer-form">
+  <%= form_with model: @booked_room, local: true do |form| %>
+  
+  <% if @booked_room.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@booked_room.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @booked_room.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <p>
+    <%= form.label :start_date %><br>
+    <%= form.date_field :start_date %>
+  </p>
+  
+  <p>
+    <%= form.label :end_date %><br>
+    <%= form.date_field :end_date %>
+  </p>
+  
+  <p>
+    <%= form.label :status %><br>
+    <%= form.select :status, get_status_options %>
+  </p>
+  
+  <p>
+    <%= form.label :check_in %><br>
+    <%= form.time_field :check_in %>
+  </p>
+  
+  <p>
+    <%= form.label :check_out %><br>
+    <%= form.time_field :check_out %>
+  </p>
+  
+  <p>
+    <%= form.label :room %><br>
+    <%= form.select :room_id, get_rooms_options %>
+  </p>
+  
+  <p>
+    <%= form.label :customer %><br>
+    <%= form.select :customer_id, get_customers_options %>
+  </p>
+  
+  <p class="login-button customer-btn">
+    <%= link_to 'Cancel', booked_rooms_path %> <%= form.submit "Save Booking" %>
+  </p>
+  
+  <% end %>
 </div>
-<% end %>
-
-<p>
-  <%= form.label :start_date %><br>
-  <%= form.date_field :start_date %>
-</p>
-
-<p>
-  <%= form.label :end_date %><br>
-  <%= form.date_field :end_date %>
-</p>
-
-<p>
-  <%= form.label :status %><br>
-  <%= form.select :status, get_status_options %>
-</p>
-
-<p>
-  <%= form.label :check_in %><br>
-  <%= form.time_field :check_in %>
-</p>
-
-<p>
-  <%= form.label :check_out %><br>
-  <%= form.time_field :check_out %>
-</p>
-
-<p>
-  <%= form.label :room %><br>
-  <%= form.select :room_id, get_rooms_options %>
-</p>
-
-<p>
-  <%= form.label :customer %><br>
-  <%= form.select :customer_id, get_customers_options %>
-</p>
-
-<p>
-  <%= form.submit %>
-</p>
-
-<% end %>
