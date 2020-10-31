@@ -9,31 +9,28 @@
   </head>
 
   <body>
-    <header>
-      <div class="container header">
-        <div class=" row">
-          <div class="logo col-sm-6">
-            <img src="/assets/logo.jpg" alt="">
-          </div>
-          <% unless current_user.nil? %>
-          <div class="col-sm-5 text-right">
-            <a class="btn btn-primary" href="/users/sign_out">Log Out</a>
-          </div>
+    <nav class="navbar bg-white">
+      <a class="navbar-brand" href="/">
+        <img class="brand-logo" src="/assets/logo.jpg" alt="">
+      </a>
+
+      <div class="form-inline">
+        <% unless current_user.nil? %>
+          <a class="navbar-menu pad-r0" href="/customers">Customers</a>
+          <a class="navbar-menu" href="/booked_rooms">Bookings</a>
+          <a class="btn btn-primary" href="/users/sign_out">Log Out</a>
+        <% else %>
+          <% if request.path=='/users/sign_in' %>
+          <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
           <% else %>
-          <div class="col-sm-6 text-right">
-            <% if request.path=='/users/sign_in' %>
-            <a class="btn btn-primary" href="/users/sign_up">Sign Up</a>
-            <% else %>
-            <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
-            <% end %>
-          </div>
+          <a class="btn btn-primary" href="/users/sign_in">Sign In</a>
           <% end %>
-        </div>
+        <% end %>
       </div>
-    </header>
+    </nav>
 
     <div>
-      <div class="container container-wrapper">
+      <div class="web-bg">
         <%= yield %>
       </div>
     </div>
