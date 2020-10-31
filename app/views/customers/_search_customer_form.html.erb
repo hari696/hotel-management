@@ -1,11 +1,18 @@
-<%= form_with scope: :customer, url: '/customers/search', method: :get, local: true do |form| %>
+<div class="search-container">
+	<div class="row">
+		<div class="main-search col-md-10 pad-r0">
+			<%= form_with scope: :customer, url: '/customers/search', method: :get, local: true do |form| %>
 
-<p>
-  <%= form.text_field :q, value: keyword %>
-</p>
+      <p>
+        <%= form.text_field :q, value: keyword, placeholder: 'Search using customer name...', autocomplete: :off %>
+      </p>
+		</div>
+		<div class="col-md-2 pad-l0 search-btn">
+			<p>
+        <%= form.submit "Find Customer" %>
+      </p>
+		</div>
+	</div>
 
-<p>
-  <%= form.submit %>
-</p>
-
-<% end %>
+	<% end %>
+</div>
