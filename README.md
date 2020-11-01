@@ -53,6 +53,12 @@ $ rake hotel_management:setup_dummy_data
 $ rake hotel_management:reset_database
 ```
 
+### Seed User Login
+
+**Email:** `admin@hotelmangement.com`
+
+**Password:** `admin@123`
+
 ### Running Application
 
 ```bash
